@@ -16,7 +16,7 @@ export const Route = createFileRoute("/routes/new")({
   component: NewRoute,
 });
 
-function CoordInput({ label, value, onChange, tone }: { label: string; value?: Point; onChange: (p: Point) => void; tone: string }) {
+function CoordInput({ label, value, onChange, tone }: { label: string; value?: Point | undefined; onChange: (p: Point) => void; tone: string }) {
   const set = (k: "x" | "y", v: string) => {
     const n = Math.max(0, Math.min(GRID, Math.round(Number(v) || 0)));
     onChange({ x: value?.x ?? 0, y: value?.y ?? 0, [k]: n });

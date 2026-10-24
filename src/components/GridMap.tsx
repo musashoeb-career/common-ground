@@ -5,7 +5,7 @@ const PAD = 1;
 
 type Props = {
   segments: Segment[];
-  draft?: { start?: Point; end?: Point };
+  draft?: { start?: Point | undefined; end?: Point | undefined };
   onPick?: (p: Point) => void;
   markers?: Point[];
 };

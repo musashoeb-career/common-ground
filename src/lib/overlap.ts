@@ -37,8 +37,8 @@ export function computeOverlaps(segments: Segment[]): Piece[] {
   for (const { dir, base, spans } of groups.values()) {
     const cuts = [...new Set(spans.flat())].sort((m, n) => m - n);
     for (let i = 0; i < cuts.length - 1; i++) {
-      const s = cuts[i];
-      const e = cuts[i + 1];
+      const s = cuts[i]!;
+      const e = cuts[i + 1]!;
       const mid = (s + e) / 2;
       const count = spans.filter(([p, q]) => p <= mid && q >= mid).length;
       if (!count) continue;
