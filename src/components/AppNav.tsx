@@ -1,9 +1,11 @@
 import { Link } from "@tanstack/react-router";
-import { Map, Plus } from "lucide-react";
+import { Car, Map, Plus, User } from "lucide-react";
 
 const items = [
   { to: "/", label: "Super Map", icon: Map },
+  { to: "/rides", label: "Rides", icon: Car },
   { to: "/routes/new", label: "Add my route", icon: Plus },
+  { to: "/profile", label: "Profile", icon: User },
 ] as const;
 
 export function AppNav() {
