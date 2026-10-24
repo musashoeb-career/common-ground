@@ -1,6 +1,7 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
-import { GridMap, GRID } from "@/components/GridMap";
+import { GridMap } from "@/components/GridMap";
+import { CoordInput } from "@/components/CoordInput";
 import { CATEGORIES, useStore, type CategoryId } from "@/lib/store";
 import type { Point } from "@/lib/overlap";
 
