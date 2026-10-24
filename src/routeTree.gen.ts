@@ -10,11 +10,35 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as RidesIndexRouteImport } from './routes/rides.index'
+import { Route as RidesRideIdRouteImport } from './routes/rides.$rideId'
+import { Route as RidesNewRouteImport } from './routes/rides.new'
 import { Route as RoutesNewRouteImport } from './routes/routes.new'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RidesIndexRoute = RidesIndexRouteImport.update({
+  id: '/rides/',
+  path: '/rides/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RidesRideIdRoute = RidesRideIdRouteImport.update({
+  id: '/rides/$rideId',
+  path: '/rides/$rideId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RidesNewRoute = RidesNewRouteImport.update({
+  id: '/rides/new',
+  path: '/rides/new',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RoutesNewRoute = RoutesNewRouteImport.update({
@@ -25,28 +49,63 @@ const RoutesNewRoute = RoutesNewRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/profile': typeof ProfileRoute
+  '/rides/$rideId': typeof RidesRideIdRoute
+  '/rides/new': typeof RidesNewRoute
   '/routes/new': typeof RoutesNewRoute
+  '/rides/': typeof RidesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/profile': typeof ProfileRoute
+  '/rides/$rideId': typeof RidesRideIdRoute
+  '/rides/new': typeof RidesNewRoute
   '/routes/new': typeof RoutesNewRoute
+  '/rides': typeof RidesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/profile': typeof ProfileRoute
+  '/rides/$rideId': typeof RidesRideIdRoute
+  '/rides/new': typeof RidesNewRoute
   '/routes/new': typeof RoutesNewRoute
+  '/rides/': typeof RidesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/routes/new'
+  fullPaths:
+    | '/'
+    | '/profile'
+    | '/rides/$rideId'
+    | '/rides/new'
+    | '/routes/new'
+    | '/rides/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/routes/new'
-  id: '__root__' | '/' | '/routes/new'
+  to:
+    | '/'
+    | '/profile'
+    | '/rides/$rideId'
+    | '/rides/new'
+    | '/routes/new'
+    | '/rides'
+  id:
+    | '__root__'
+    | '/'
+    | '/profile'
+    | '/rides/$rideId'
+    | '/rides/new'
+    | '/routes/new'
+    | '/rides/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ProfileRoute: typeof ProfileRoute
+  RidesRideIdRoute: typeof RidesRideIdRoute
+  RidesNewRoute: typeof RidesNewRoute
   RoutesNewRoute: typeof RoutesNewRoute
+  RidesIndexRoute: typeof RidesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -56,6 +115,34 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rides/': {
+      id: '/rides/'
+      path: '/rides'
+      fullPath: '/rides/'
+      preLoaderRoute: typeof RidesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rides/$rideId': {
+      id: '/rides/$rideId'
+      path: '/rides/$rideId'
+      fullPath: '/rides/$rideId'
+      preLoaderRoute: typeof RidesRideIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rides/new': {
+      id: '/rides/new'
+      path: '/rides/new'
+      fullPath: '/rides/new'
+      preLoaderRoute: typeof RidesNewRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/routes/new': {
@@ -70,7 +157,11 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ProfileRoute: ProfileRoute,
+  RidesRideIdRoute: RidesRideIdRoute,
+  RidesNewRoute: RidesNewRoute,
   RoutesNewRoute: RoutesNewRoute,
+  RidesIndexRoute: RidesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
