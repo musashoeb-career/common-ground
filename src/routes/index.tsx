@@ -20,7 +20,7 @@ function SuperMap() {
   return (
     <main className="mx-auto grid max-w-6xl gap-8 px-5 pb-16 lg:grid-cols-[1fr_340px]">
       <section>
-        <h1 className="font-display text-4xl md:text-5xl">Where people want to go</h1>
+        <h1 className="font-display text-4xl md:text-5xl">Get Medical Attention Quickly</h1>
         <p className="mt-2 text-lg text-muted-foreground">Thicker, warmer lines mean more people share that stretch.</p>
         <div className="mt-6"><GridMap segments={routes.map((r) => ({ a: r.start, b: r.end }))} /></div>
         <div className="mt-4 flex items-center gap-3 text-sm text-muted-foreground">

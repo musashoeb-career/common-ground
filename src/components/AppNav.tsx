@@ -11,7 +11,7 @@ const items = [
 export function AppNav() {
   return (
     <header className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-5 py-6">
-      <Link to="/" className="font-display text-3xl text-foreground">Commons<span className="text-accent">.</span></Link>
+      <Link to="/" className="font-display text-3xl text-foreground">Hospifast<span className="text-accent">.</span></Link>
       <nav className="flex gap-2 rounded-full bg-card p-1.5 shadow-soft">
         {items.map(({ to, label, icon: Icon }) => (
           <Link
